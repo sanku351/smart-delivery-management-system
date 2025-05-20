@@ -1,33 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart Delivery Management System
+
+A modern delivery management dashboard focusing on partner management and smart order assignments.
+
+## Overview
+
+This application provides a comprehensive solution for managing delivery operations, including:
+
+- Partner management (registration, profiles, area coverage, shift scheduling)
+- Order processing and tracking
+- Smart assignment system for matching orders with delivery partners
+- Performance metrics and analytics
+
+## Features
+
+### Partner Management
+- Partner registration and profile management
+- Service area configuration
+- Shift scheduling
+- Performance metrics tracking
+
+### Order Processing
+- Order dashboard with filtering capabilities
+- Status tracking (pending, assigned, picked, delivered)
+- Assignment history
+- Order details view
+
+### Assignment System
+- Smart algorithm for matching orders with partners
+- Assignment metrics and analytics
+- Manual and automatic assignment options
+
+## Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **State Management**: React Context API
+- **Charts**: Recharts
+
+## Project Structure
+
+```
+/app                    # Next.js App Router
+  /api                  # API routes
+    /partners           # Partner management endpoints
+    /orders             # Order management endpoints
+    /assignments        # Assignment system endpoints
+  /partners             # Partners page
+  /orders               # Orders page
+  /assignments          # Assignments page
+/components             # React components
+  /ui                   # UI components (shadcn/ui)
+/lib                    # Utility functions and types
+  types.ts              # TypeScript type definitions
+  data.ts               # Mock data (replace with actual data source)
+  utils.ts              # Utility functions
+```
+
+## API Routes
+
+### Partner Routes
+- `GET /api/partners` - Get all partners
+- `POST /api/partners` - Create a new partner
+- `PUT /api/partners/[id]` - Update a partner
+- `DELETE /api/partners/[id]` - Delete a partner
+
+### Order Routes
+- `GET /api/orders` - Get all orders
+- `POST /api/orders/assign` - Assign an order to a partner
+- `PUT /api/orders/[id]/status` - Update order status
+
+### Assignment Routes
+- `GET /api/assignments/metrics` - Get assignment metrics
+- `POST /api/assignments/run` - Run the smart assignment algorithm
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+```
+git clone https://github.com/sanku351/smart-delivery-management-system.git
+```
+2. Install dependencies:
+```
+npm install
+```
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
