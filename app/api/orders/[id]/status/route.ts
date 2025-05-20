@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
 import { orders, partners } from "@/lib/data"
 
 // PUT /api/orders/[id]/status
 export async function PUT(
-  request: NextRequest,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
@@ -14,7 +15,7 @@ export async function PUT(
       return NextResponse.json({ error: "Status is required" }, { status: 400 })
     }
 
-    const { status } = body
+    const { status } = body    
 
     // Validate status
     if (!["pending", "assigned", "picked", "delivered"].includes(status)) {
@@ -52,10 +53,7 @@ export async function PUT(
       }
     }
 
-    return NextResponse.json({
-      success: true,
-      order: orders[orderIndex],
-    })
+    return NextResponse.json({ success: true, order: orders[orderIndex] })
   } catch (error) {
     return NextResponse.json({ error: "Failed to update order status" }, { status: 500 })
   }
