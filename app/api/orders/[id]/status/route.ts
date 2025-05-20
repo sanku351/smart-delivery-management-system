@@ -1,8 +1,11 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { orders, partners } from "@/lib/data"
 
 // PUT /api/orders/[id]/status
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const id = params.id
     const body = await request.json()
@@ -24,7 +27,6 @@ export async function PUT(request: Request, { params }: { params: { id: string }
       return NextResponse.json({ error: "Order not found" }, { status: 404 })
     }
 
-    const oldStatus = orders[orderIndex].status
     const partnerId = orders[orderIndex].assignedTo
 
     // Update order status
